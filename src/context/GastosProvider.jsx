@@ -1,15 +1,16 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const GastosContext = createContext();
 
 export function GastosProvider({children}) {
 
-  const hola = 'Hello context'
+  const [presupuesto, setPresupuesto] = useState(0);
 
   return(
     <GastosContext.Provider
       value={{
-        hola,
+        presupuesto,
+        setPresupuesto,
       }}
     >
       {children}
