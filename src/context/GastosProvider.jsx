@@ -6,6 +6,7 @@ export function GastosProvider({children}) {
 
   const [presupuesto, setPresupuesto] = useState(0);
   const [isValidPresupuesto, setIsValidPrespuesto] = useState(false);
+  const [modal, setModal] = useState(false);
 
   return(
     <GastosContext.Provider
@@ -13,7 +14,9 @@ export function GastosProvider({children}) {
         presupuesto,
         setPresupuesto,
         setIsValidPrespuesto,
-        isValidPresupuesto
+        isValidPresupuesto,
+        setModal,
+        modal,
       }}
     >
       {children}
