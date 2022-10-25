@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 const GastosContext = createContext();
 
-export function gastosProvider({children}) {
+export function GastosProvider({children}) {
 
   const hola = 'Hello context'
 
