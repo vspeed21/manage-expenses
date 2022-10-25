@@ -1,9 +1,13 @@
+import { GastosProvider } from "./context/GastosProvider"
+import AppGastos from "./components/AppGastos"
 
 
 function App() {
 
   return (
-    <h1>Hola react</h1>
+    <GastosProvider>
+      <AppGastos />
+    </GastosProvider>
   )
 }
 
