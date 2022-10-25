@@ -4,7 +4,7 @@ import useGastos from '../hook/useGastos';
 import Alerta from './Alerta';
 
 function Formulario() {
-  const { presupuesto, setPresupuesto, setIsValidPresupuesto } = useGastos();
+  const { presupuesto, setPresupuesto, setIsValidPrespuesto } = useGastos();
   const [mensaje, setMensaje] = useState('');
 
   const handleSubmit = e => {
@@ -18,7 +18,7 @@ function Formulario() {
       return;
     }
     setMensaje('');
-    setIsValidPresupuesto(true);
+    setIsValidPrespuesto(true);
   }
 
   return (
