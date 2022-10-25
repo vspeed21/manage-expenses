@@ -1,8 +1,10 @@
-import React from 'react'
+import Header from '../layout/Header'
 
 function AppGastos() {
   return (
-    <div>AppGastos</div>
+    <>
+      <Header/>
+    </>
   )
 }
 
