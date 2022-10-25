@@ -1,0 +1,9 @@
+.mt-neg{
+  margin-top: -2rem;
+}
+
+.contenedor{
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
