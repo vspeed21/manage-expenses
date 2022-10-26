@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { nanoid } from 'nanoid'
 
 const GastosContext = createContext();
 
@@ -29,6 +30,8 @@ export function GastosProvider({children}) {
   }
 
   function agregarGasto(gasto) {
+    gasto.id = nanoid();
+    gasto.fecha = Date.now();
     setGastos([...gastos, gasto]);
   }
 
