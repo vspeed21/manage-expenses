@@ -1,6 +1,7 @@
 import useGastos from '../hook/useGastos';
 
 import IconoCerrarModal from '../img/cerrar.svg';
+import Formulario from './Formulario';
 
 function Modal() {
   const { closeModal } = useGastos();
@@ -16,6 +17,9 @@ function Modal() {
           onClick={() => closeModal()}
         />
       </div>
+
+      <Formulario/>
+
     </div>
   )
 }
