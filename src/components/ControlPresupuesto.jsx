@@ -3,10 +3,19 @@ import { formatearCantidad } from '../helpers';
 import IconoNuevoGasto from '../img/nuevo-gasto.svg';
 import Modal from './Modal';
 import ListadoGastos from './ListadoGastos';
+import { useEffect, useState } from 'react';
 
 function ControlPresupuesto() {
 
-  const {presupuesto, showModal, modal} = useGastos();
+  const [disponible, setDisponible] = useState(0);
+  const [gastado, setGastado] = useState(0);
+  const {presupuesto, showModal, modal, gastos} = useGastos();
+
+  useEffect( () => {
+    const cantidadGastada = gastos.reduce((acc, gasto) => gasto.cantidad + acc, 0);
+    setGastado(cantidadGastada);
+    setDisponible(presupuesto - cantidadGastada);
+  }, [gastos]);
 
   return (
     <section>
@@ -22,12 +31,12 @@ function ControlPresupuesto() {
 
             <p className='text-xl'>
               <span className='font-bold text-blue-600'>Disponible: </span>
-              {formatearCantidad(0)}
+              {formatearCantidad(disponible)}
             </p>
 
             <p className='text-xl'>
               <span className='font-bold text-blue-600'>Gastado: </span>
-              {formatearCantidad(0)}
+              {formatearCantidad(gastado)}
             </p>
           </div>
         </div>
