@@ -7,6 +7,23 @@ export function GastosProvider({children}) {
   const [presupuesto, setPresupuesto] = useState(0);
   const [isValidPresupuesto, setIsValidPrespuesto] = useState(false);
   const [modal, setModal] = useState(false);
+  const [animarModal, setAnimarModal] = useState(false);
+
+  function showModal() {
+    setModal(true);
+
+    setTimeout(() => {
+      setAnimarModal(true);
+    }, 500);
+  }
+
+  function closeModal() {
+    setAnimarModal(false);
+
+    setTimeout(() => {
+      setModal(false);
+    }, 500);
+  }
 
   return(
     <GastosContext.Provider
@@ -15,8 +32,10 @@ export function GastosProvider({children}) {
         setPresupuesto,
         setIsValidPrespuesto,
         isValidPresupuesto,
-        setModal,
+        animarModal,
         modal,
+        showModal,
+        closeModal,
       }}
     >
       {children}
