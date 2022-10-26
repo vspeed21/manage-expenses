@@ -9,7 +9,7 @@ function Formulario() {
   const [categoria, setCategoria] = useState('');
   const [mensaje, setMensaje] = useState('');
 
-  const { animarModal, agregarGasto } = useGastos();
+  const { animarModal, agregarGasto, closeModal } = useGastos();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,6 +20,7 @@ function Formulario() {
     }
     setMensaje('');
     agregarGasto({nombre, cantidad, categoria});
+    closeModal()
   }
 
   return (
@@ -75,7 +76,7 @@ function Formulario() {
           value={categoria}
           onChange={e => setCategoria(e.target.value)}
         >
-          <option value='' disabled selected> --Seleccione una categoria--</option>
+          <option value=''> --Seleccione una categoria--</option>
           <option value='ahorro'>Ahorro</option>
           <option value='comida'>Comida</option>
           <option value='casa'>Casa</option>
