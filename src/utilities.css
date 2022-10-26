@@ -1,3 +1,37 @@
 .mt-neg{
   margin-top: -2rem;
 }
+
+.max-w-2xl{
+  max-width: 672px !important;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  font-size: 1rem !important;
+}
+
+/*** SWIPE LIST OVERRIDES **/
+.swipe-action__leading {
+  background-color: #3b82f6;
+  color: #FFF;
+  margin-bottom: 2rem;
+}
+
+.swipe-action__trailing {
+  background-color: #db2777;
+  margin-bottom: 2rem;
+  color: #FFF;
+}
+
+.swipeable-list .swipe-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: right;
+  font-weight: bold;
+}
+
+.swipeable-list{
+  margin-top: 3rem;
+}
