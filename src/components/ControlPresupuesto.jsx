@@ -2,6 +2,7 @@ import useGastos from '../hook/useGastos';
 import { formatearCantidad } from '../helpers';
 import IconoNuevoGasto from '../img/nuevo-gasto.svg';
 import Modal from './Modal';
+import ListadoGastos from './ListadoGastos';
 
 function ControlPresupuesto() {
 
@@ -35,6 +36,8 @@ function ControlPresupuesto() {
       {modal && (
         <Modal/>
       )}
+
+      <ListadoGastos/>
 
       <div className={`absolute bottom-10 right-10 ${modal ? 'hidden' : 'block'}`}>
         <img
