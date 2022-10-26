@@ -1,10 +1,11 @@
 import useGastos from '../hook/useGastos';
 import { formatearCantidad } from '../helpers';
 import IconoNuevoGasto from '../img/nuevo-gasto.svg';
+import Modal from './Modal';
 
 function ControlPresupuesto() {
 
-  const {presupuesto, setModal} = useGastos();
+  const {presupuesto, mostrarModal, modal} = useGastos();
 
   return (
     <section>
@@ -31,12 +32,16 @@ function ControlPresupuesto() {
         </div>
       </div>
 
-      <div className='absolute bottom-10 right-10'>
+      {modal && (
+        <Modal/>
+      )}
+
+      <div className={`absolute bottom-10 right-10 ${modal ? 'hidden' : 'block'}`}>
         <img
           src={IconoNuevoGasto}
           alt='icono nuevo gasto'
           className="w-12 hover:cursor-pointer"
-          onClick={() => setModal(true)}
+          onClick={() => mostrarModal()}
         />
       </div>
     </section>
