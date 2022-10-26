@@ -9,7 +9,7 @@ function Formulario() {
   const [categoria, setCategoria] = useState('');
   const [mensaje, setMensaje] = useState('');
 
-  const { animarModal } = useGastos();
+  const { animarModal, agregarGasto } = useGastos();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,8 +18,8 @@ function Formulario() {
       setMensaje('Todos los campos son obligatorios');
       return;
     }
-    setMensaje('')
-    console.log('agregando gasto');
+    setMensaje('');
+    agregarGasto({nombre, cantidad, categoria});
   }
 
   return (
