@@ -5,7 +5,7 @@ import Modal from './Modal';
 
 function ControlPresupuesto() {
 
-  const {presupuesto, mostrarModal, modal} = useGastos();
+  const {presupuesto, showModal, modal} = useGastos();
 
   return (
     <section>
@@ -41,7 +41,7 @@ function ControlPresupuesto() {
           src={IconoNuevoGasto}
           alt='icono nuevo gasto'
           className="w-12 hover:cursor-pointer"
-          onClick={() => mostrarModal()}
+          onClick={() => showModal()}
         />
       </div>
     </section>
