@@ -39,7 +39,7 @@ function ControlPresupuesto() {
 
       <ListadoGastos/>
 
-      <div className={`absolute bottom-10 right-10 ${modal ? 'hidden' : 'block'}`}>
+      <div className={`fixed bottom-10 right-10 ${modal ? 'hidden' : 'block'}`}>
         <img
           src={IconoNuevoGasto}
           alt='icono nuevo gasto'
