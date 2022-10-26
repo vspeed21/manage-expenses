@@ -6,8 +6,11 @@ export function GastosProvider({children}) {
 
   const [presupuesto, setPresupuesto] = useState(0);
   const [isValidPresupuesto, setIsValidPrespuesto] = useState(false);
+
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
+
+  const [gastos, setGastos] = useState([]);
 
   function showModal() {
     setModal(true);
@@ -25,6 +28,10 @@ export function GastosProvider({children}) {
     }, 500);
   }
 
+  function agregarGasto(gasto) {
+    setGastos([...gastos, gasto]);
+  }
+
   return(
     <GastosContext.Provider
       value={{
@@ -36,6 +43,8 @@ export function GastosProvider({children}) {
         modal,
         showModal,
         closeModal,
+        agregarGasto,
+        gastos,
       }}
     >
       {children}
