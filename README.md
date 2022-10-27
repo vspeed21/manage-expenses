@@ -8,6 +8,6 @@ If you downlad this project should do some things:
 
 IN YOUR TERMINAL: npm install || npm i
 
-IN YOUR BROWSER: open the URL http//:localhost:3000 || http://127.0.0.1:5173
+IN YOUR BROWSER: open the URL http://localhost:3000 || http://127.0.0.1:5173
 
 Thanks for reading
