@@ -55,6 +55,12 @@ export function GastosProvider({children}) {
     }
   }
 
+  function eliminarGasto(id) {
+    const gastosActualizados = gastos.filter( gasto => gasto.id !== id );
+
+    setGastos(gastosActualizados);
+  }
+
   return(
     <GastosContext.Provider
       value={{
@@ -70,6 +76,7 @@ export function GastosProvider({children}) {
         gastos,
         gastoEditar,
         setGastoEditar,
+        eliminarGasto
       }}
     >
       {children}
