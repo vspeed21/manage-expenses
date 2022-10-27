@@ -88,7 +88,7 @@ export function GastosProvider({children}) {
   function eliminarGasto(id) {
     swal({
       title: '¿Eliminar gasto?',
-      text: 'Quieres eliminar este gasto?',
+      text: '¿Quieres eliminar este gasto?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
@@ -97,6 +97,23 @@ export function GastosProvider({children}) {
       if (willDelete) {
         const gastosActualizados = gastos.filter( gasto => gasto.id !== id );
         setGastos(gastosActualizados);
+      } 
+    });
+  }
+
+  function handleResetApp() {
+    swal({
+      title: '¿Reiniciar app?',
+      text: '¿Quieres reiniciar la aplicacion? Perderas tus gastos',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then( willDelete => {
+      if (willDelete) {
+        setIsValidPrespuesto(false);
+        setPresupuesto(0)
+        setGastos([]);
       } 
     });
   }
@@ -120,6 +137,7 @@ export function GastosProvider({children}) {
         filtro,
         gastosFiltrados,
         setFiltro,
+        handleResetApp
       }}
     >
       {children}

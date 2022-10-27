@@ -12,7 +12,7 @@ function ControlPresupuesto() {
 
   const [disponible, setDisponible] = useState(0);
   const [gastado, setGastado] = useState(0);
-  const {presupuesto, showModal, modal, gastos} = useGastos();
+  const {presupuesto, showModal, modal, gastos, handleResetApp} = useGastos();
 
   const [porcentaje, setPorcentaje] = useState(0);
 
@@ -47,6 +47,14 @@ function ControlPresupuesto() {
           </div>
 
           <div className="flex flex-col gap-4">
+            <button 
+              type='button'
+              className='bg-red-500 text-white font-bold uppercase py-2 px-5 rounded-lg hover:bg-red-600 transition-colors duration-300 mt-5 md:mt-0'
+              onClick={handleResetApp}
+            >
+              Reinicar app
+            </button>
+
             <p className='text-xl'>
               <span className='font-bold text-blue-600'>Presupuesto: </span>
               {formatearCantidad(presupuesto)}
