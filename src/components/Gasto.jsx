@@ -6,6 +6,7 @@ import {
   TrailingActions,
 } from 'react-swipeable-list';
 import 'react-swipeable-list/dist/styles.css';
+import useGastos from '../hook/useGastos';
 
 import { formatearFecha } from '../helpers';
 import IconoAhorro from '../img/icono_ahorro.svg';
@@ -28,11 +29,13 @@ const diccionarioIconos = {
 
 
 function Gasto({gasto}) {
-  const {nombre, cantidad, categoria, id, fecha} = gasto
+  const {nombre, cantidad, categoria, id, fecha} = gasto;
+
+  const { setGastoEditar } = useGastos();
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.log('editando')}>
+      <SwipeAction onClick={() => setGastoEditar(gasto)}>
         Editar
       </SwipeAction>
     </LeadingActions>

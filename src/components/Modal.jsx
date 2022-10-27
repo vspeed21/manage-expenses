@@ -7,7 +7,7 @@ function Modal() {
   const { closeModal } = useGastos();
 
   return (
-    <div className='bg-black h-screen absolute top-0 left-0 w-full'>
+    <div className='bg-black h-screen fixed z-10 top-0 left-0 right-0 bottom-0w-full'>
 
       <div className='relative'>
         <img 

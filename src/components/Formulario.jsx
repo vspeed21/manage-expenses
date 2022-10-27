@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import useGastos from '../hook/useGastos';
 import Alerta from './Alerta';
@@ -8,8 +8,20 @@ function Formulario() {
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const [id, setId] = useState('');
+  const [fecha, setFecha] = useState('');
 
-  const { animarModal, agregarGasto, closeModal } = useGastos();
+  const { animarModal, agregarGasto, closeModal, gastoEditar } = useGastos();
+
+  useEffect(() => {
+    if( Object.keys(gastoEditar).length ) {
+      setNombre(gastoEditar.nombre);
+      setCantidad(gastoEditar.cantidad);
+      setCategoria(gastoEditar.categoria);
+      setId(gastoEditar.id);
+      setFecha(gastoEditar.fecha);
+    }
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,16 +31,16 @@ function Formulario() {
       return;
     }
     setMensaje('');
-    agregarGasto({nombre, cantidad, categoria});
-    closeModal()
+    agregarGasto({nombre, cantidad, categoria, id, fecha});
+    closeModal();
   }
 
   return (
     <form 
-      className={`w-11/12 lg:w-2/6 mx-auto mt-14 ${animarModal ? 'opacity-1' : 'opacity-0'} transition-opacity`}
+      className={`w-11/12 lg:w-2/6 mx-auto mt-14 ${animarModal ? 'opacity-1' : 'opacity-0'} transition-opacity duration-500`}
       onSubmit={handleSubmit}
     >
-      <legend className='text-white uppercase text-3xl font-bold border-b-4 border-blue-800 pb-4 text-center'>nuevo gasto</legend>
+      <legend className='text-white uppercase text-3xl font-bold border-b-4 border-blue-800 pb-4 text-center'>{gastoEditar.nombre ? 'Editar gasto' : 'nuevo gasto'}</legend>
 
       {mensaje && <Alerta mensaje={mensaje} tipo="error" />}
 
@@ -89,7 +101,7 @@ function Formulario() {
 
       <input 
         type='submit' 
-        value={'Añadir gasto'}
+        value={gastoEditar.nombre ? 'Guardar cambios' : 'Añadir gasto'}
         className='bg-blue-700 text-white p-3 rounded mt-5 text-center w-full text-base uppercase font-bold hover:cursor-pointer hover:bg-blue-800 transition-colors'
       />
     </form>
