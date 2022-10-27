@@ -19,6 +19,9 @@ export function GastosProvider({children}) {
   );
   const [gastoEditar, setGastoEditar] = useState({});
 
+  const [filtro, setFiltro] = useState('');
+  const [gastosFiltrados, setGastosFiltrados] = useState([]);
+
   useEffect(() => {
     if(Object.keys(gastoEditar).length ) {
       setModal(true);
@@ -43,6 +46,11 @@ export function GastosProvider({children}) {
   useEffect(() => {
     localStorage.setItem('gastos', JSON.stringify(gastos) ?? []);
   }, [gastos]);
+
+  useEffect(() => {
+    const gastosF = gastos.filter( gasto => gasto.categoria === filtro);
+    setGastosFiltrados(gastosF);
+  }, [filtro]);
 
   function showModal() {
     setModal(true);
@@ -97,7 +105,10 @@ export function GastosProvider({children}) {
         gastos,
         gastoEditar,
         setGastoEditar,
-        eliminarGasto
+        eliminarGasto,
+        filtro,
+        gastosFiltrados,
+        setFiltro,
       }}
     >
       {children}
