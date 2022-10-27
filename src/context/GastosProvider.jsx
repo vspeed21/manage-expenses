@@ -14,7 +14,9 @@ export function GastosProvider({children}) {
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
 
-  const [gastos, setGastos] = useState([]);
+  const [gastos, setGastos] = useState(
+    localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []
+  );
   const [gastoEditar, setGastoEditar] = useState({});
 
   useEffect(() => {
@@ -37,6 +39,10 @@ export function GastosProvider({children}) {
       setIsValidPrespuesto(true);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('gastos', JSON.stringify(gastos) ?? []);
+  }, [gastos]);
 
   function showModal() {
     setModal(true);
