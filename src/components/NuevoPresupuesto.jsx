@@ -24,7 +24,7 @@ function Formulario() {
   return (
     <form 
       onSubmit={handleSubmit}
-      className='bg-white shadow max-w-2xl mx-auto mt-neg p-8 contenedor'
+      className='bg-white shadow max-w-2xl mx-auto mt-neg p-8 w-11/12 rounded'
     >
       {mensaje && (
         <Alerta

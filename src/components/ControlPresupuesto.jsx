@@ -31,7 +31,7 @@ function ControlPresupuesto() {
 
   return (
     <section>
-      <div className="mx-auto bg-white shadow hover:shadow-md transition-shadow py-10 px-5 mt-neg max-w-2xl">
+      <div className="mx-auto bg-white shadow hover:shadow-md transition-shadow py-10 px-5 mt-neg max-w-2xl w-11/12 rounded-lg">
         <div className="grid md:grid-cols-2 place-items-center justify-center">
           <div className="w-56 h-56">
             <CircularProgressbar

@@ -104,7 +104,7 @@ export function GastosProvider({children}) {
   function handleResetApp() {
     swal({
       title: '¿Reiniciar app?',
-      text: '¿Quieres reiniciar la aplicacion? Perderas tus gastos',
+      text: '¿Quieres reiniciar la aplicacion? Perderas todos tus gastos',
       icon: 'warning',
       buttons: true,
       dangerMode: true,

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import useGastos from '../hook/useGastos';
 
 function Filtros() {
@@ -10,7 +9,7 @@ function Filtros() {
         <label htmlFor='filtro' className='text-2xl text-gray-600 font-bold'>Filtrar gastos</label>
         <select 
           id='filtro'
-          className='bg-gray-50 p-2 rounded focus:outline-0 placeholder-gray-600 text-center w-9/12'
+          className='bg-gray-100 font-bold p-2 rounded focus:outline-0 placeholder-gray-600 text-center w-7/12'
           value={filtro}
           onChange={e => setFiltro(e.target.value)}
         >
