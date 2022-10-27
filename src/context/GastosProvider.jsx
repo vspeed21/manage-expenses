@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { nanoid } from 'nanoid'
 import { useEffect } from "react";
+import swal from 'sweetalert';
 
 const GastosContext = createContext();
 
@@ -85,9 +86,19 @@ export function GastosProvider({children}) {
   }
 
   function eliminarGasto(id) {
-    const gastosActualizados = gastos.filter( gasto => gasto.id !== id );
-
-    setGastos(gastosActualizados);
+    swal({
+      title: '¿Eliminar gasto?',
+      text: 'Quieres eliminar este gasto?',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then( willDelete => {
+      if (willDelete) {
+        const gastosActualizados = gastos.filter( gasto => gasto.id !== id );
+        setGastos(gastosActualizados);
+      } 
+    });
   }
 
   return(
