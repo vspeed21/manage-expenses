@@ -36,6 +36,7 @@ export function GastosProvider({children}) {
 
   function closeModal() {
     setAnimarModal(false);
+    setGastoEditar({});
 
     setTimeout(() => {
       setModal(false);
@@ -47,6 +48,7 @@ export function GastosProvider({children}) {
       //Actualizar
       const gastosActualizados = gastos.map( gastoState => gastoState.id === gasto.id ? gasto : gastoState);
       setGastos(gastosActualizados);
+      setGastoEditar({});
 
     }else{
       gasto.id = nanoid();
