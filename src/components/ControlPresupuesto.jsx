@@ -38,10 +38,10 @@ function ControlPresupuesto() {
               value={porcentaje}
               text={`${porcentaje}% gastado`}
               styles={buildStyles({
-                pathColor: '#2564eb',
+                pathColor: porcentaje > 100 ? '#b91c1c' : '#2564eb',
                 trailColor: '#F5F5F5',
                 textSize: '10px',
-                textColor: '#2564eb'
+                textColor: porcentaje > 100 ? '#b91c1c' : '#2564eb',
               })}
             />
           </div>
@@ -52,8 +52,8 @@ function ControlPresupuesto() {
               {formatearCantidad(presupuesto)}
             </p>
 
-            <p className='text-xl'>
-              <span className='font-bold text-blue-600'>Disponible: </span>
+            <p className={`text-xl ${disponible < 0 ? 'text-red-600 font-bold' : 'text-black'}`}>
+              <span className={`font-bold ${disponible < 0 ? 'text-red-600 font-bold' : 'text-blue-600'}`}>Disponible: </span>
               {formatearCantidad(disponible)}
             </p>
 
