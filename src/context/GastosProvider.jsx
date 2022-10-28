@@ -1,7 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { nanoid } from 'nanoid'
-import { useEffect } from "react";
 import swal from 'sweetalert';
+
+import useModal from '../hook/useModal';
 
 const GastosContext = createContext();
 
@@ -9,11 +10,8 @@ export function GastosProvider({children}) {
 
   const [presupuesto, setPresupuesto] = useState(
     Number(localStorage.getItem('presupuesto')) ?? 0
-  );
+);
   const [isValidPresupuesto, setIsValidPrespuesto] = useState(false);
-
-  const [modal, setModal] = useState(false);
-  const [animarModal, setAnimarModal] = useState(false);
 
   const [gastos, setGastos] = useState(
     localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []
@@ -23,13 +21,11 @@ export function GastosProvider({children}) {
   const [filtro, setFiltro] = useState('');
   const [gastosFiltrados, setGastosFiltrados] = useState([]);
 
+  const { showModal } = useModal();
+
   useEffect(() => {
     if(Object.keys(gastoEditar).length ) {
-      setModal(true);
-
-      setTimeout(() => {
-        setAnimarModal(true);
-      }, 500);
+      showModal();
     }
   }, [gastoEditar]);
 
@@ -52,24 +48,6 @@ export function GastosProvider({children}) {
     const gastosF = gastos.filter( gasto => gasto.categoria === filtro);
     setGastosFiltrados(gastosF);
   }, [filtro]);
-
-  function showModal() {
-    setModal(true);
-    setGastoEditar({});
-
-    setTimeout(() => {
-      setAnimarModal(true);
-    }, 500);
-  }
-
-  function closeModal() {
-    setAnimarModal(false);
-    setGastoEditar({});
-
-    setTimeout(() => {
-      setModal(false);
-    }, 500);
-  }
 
   function agregarGasto(gasto) {
     if(gasto.id) {
@@ -125,10 +103,6 @@ export function GastosProvider({children}) {
         setPresupuesto,
         setIsValidPrespuesto,
         isValidPresupuesto,
-        animarModal,
-        modal,
-        showModal,
-        closeModal,
         agregarGasto,
         gastos,
         gastoEditar,

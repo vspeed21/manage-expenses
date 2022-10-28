@@ -7,14 +7,17 @@ import { useEffect, useState } from 'react';
 
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css'
+import useModal from '../hook/useModal';
 
 function ControlPresupuesto() {
 
   const [disponible, setDisponible] = useState(0);
   const [gastado, setGastado] = useState(0);
-  const {presupuesto, showModal, modal, gastos, handleResetApp} = useGastos();
+  const {presupuesto, gastos, handleResetApp} = useGastos();
 
   const [porcentaje, setPorcentaje] = useState(0);
+
+  const { showModal, modal, } = useModal();
 
   useEffect( () => {
     const cantidadGastada = gastos.reduce((acc, gasto) => gasto.cantidad + acc, 0);

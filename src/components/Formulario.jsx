@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import useGastos from '../hook/useGastos';
+import useModal from '../hook/useModal';
 import Alerta from './Alerta';
 
 function Formulario() {
@@ -11,7 +12,9 @@ function Formulario() {
   const [id, setId] = useState('');
   const [fecha, setFecha] = useState('');
 
-  const { animarModal, agregarGasto, closeModal, gastoEditar } = useGastos();
+  const { agregarGasto, gastoEditar, setGastoEditar } = useGastos();
+
+  const {animarModal, closeModal } = useModal()
 
   useEffect(() => {
     if( Object.keys(gastoEditar).length ) {
@@ -33,6 +36,7 @@ function Formulario() {
     setMensaje('');
     agregarGasto({nombre, cantidad, categoria, id, fecha});
     closeModal();
+    setGastoEditar({})
   }
 
   return (

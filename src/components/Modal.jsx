@@ -1,10 +1,10 @@
-import useGastos from '../hook/useGastos';
+import useModal from '../hook/useModal';
 
 import IconoCerrarModal from '../img/cerrar.svg';
 import Formulario from './Formulario';
 
 function Modal() {
-  const { closeModal } = useGastos();
+  const { closeModal } = useModal();
 
   return (
     <div className='bg-black h-screen fixed z-10 top-0 left-0 right-0 bottom-0w-full'>
