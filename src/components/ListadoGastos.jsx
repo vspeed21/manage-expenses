@@ -7,7 +7,9 @@ import Gasto from './Gasto'
 function ListadoGastos() {
   const { gastos, filtro, gastosFiltrados} = useGastos();
 
-  const [siguiente, setSiguiente] = useState('editar');
+  const [siguiente, setSiguiente] = useState(
+    gastos.length > 1 ? '' : 'editar'
+  );
 
   return (
     <div className='w-11/12 mx-auto'>
