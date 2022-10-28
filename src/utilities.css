@@ -27,3 +27,14 @@
   text-align: right;
   font-weight: bold;
 }
+
+.triangulo:after{
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  margin-top: -3px;
+  border-top: 20px solid rgb(147 197 253);
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
